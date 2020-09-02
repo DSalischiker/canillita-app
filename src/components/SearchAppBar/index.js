@@ -8,12 +8,26 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { withRouter } from 'react-router-dom';
+import clsx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     menuButton: {
         marginRight: theme.spacing(2),
+    },
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
     },
     title: {
         flexGrow: 1,
@@ -62,10 +76,48 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-
-const SearchAppBar = (props) => {
+/* export default function TemporaryDrawer() {
     const classes = useStyles();
 
+
+} */
+const SearchAppBar = (props) => {
+    const classes = useStyles();
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+    });
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        setState({ ...state, [anchor]: open });
+    };
+
+    const list = (anchor) => (
+        <div
+            className={clsx(classes.list, {
+                [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+            })}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+        >
+            <List>
+                {['Política', 'Internacionales', 'Tecnología', 'Espectáculos', 'Deportes'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+
+
+        </div>
+    );
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -76,10 +128,24 @@ const SearchAppBar = (props) => {
                         color="inherit"
                         aria-label="open drawer"
                     >
-                        <MenuIcon />
+
+                        {['left'].map((anchor) => (
+
+                            <React.Fragment key={anchor}>
+                                <MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
+
+                                <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+                                    {list(anchor)}
+                                </Drawer>
+                            </React.Fragment>
+
+                        ))}
+
+
+
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Material-UI
+                        Canillita
           </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>

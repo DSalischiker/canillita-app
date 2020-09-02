@@ -34,7 +34,7 @@ export default function FullWidthGrid(props) {
                 <Grid item xs={12} sm={6}>
                     <ImgMediaCard data={third} />
                 </Grid>
-                {otherNews.map((noticia) => <Grid item xs={6} sm={3}>
+                {otherNews.map((noticia) => <Grid key={noticia.news_id} item xs={6} sm={3}>
 
                     <ImgMediaCard data={noticia} />
                 </Grid>)}

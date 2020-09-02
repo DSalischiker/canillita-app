@@ -12,7 +12,6 @@ const Home = () => {
                 const response = await axios.get('https://api.canillitapp.com/latest/2020-08-27');
 
                 const data = response.data.slice(0, 15)
-                console.log(data);
                 setNews(data)
                 setLoading(false);
             } catch (error) {
