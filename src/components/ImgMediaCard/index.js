@@ -8,6 +8,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { TextareaAutosize } from '@material-ui/core';
+import Icon from '@material-ui/core/Icon';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 const useStyles = makeStyles({
     root: {
         maxWidth: 1200,
@@ -25,8 +28,7 @@ export default function ImgMediaCard(props) {
         title,
         url
     } = props.data;
-    console.log(props);
-    console.log(source_name);
+    const { height } = props;
     const classes = useStyles();
     const img = img_url ? img_url : "/img.jpg"
     return (
@@ -36,7 +38,7 @@ export default function ImgMediaCard(props) {
                     <CardMedia
                         component="img"
                         alt={title}
-                        height="140"
+                        height={height}
                         image={img}
                         title={title}
                     />
@@ -44,18 +46,18 @@ export default function ImgMediaCard(props) {
                         <Typography gutterBottom variant="h5" component="h2">
                             {source_name}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
+                        <Typography variant="body2" color="textSecondary" component="p" className="content-p">
                             {title}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
                     <Button size="small" color="primary">
-                        Share
-                </Button>
+                        <a target="_blank" href={`http://twitter.com/share?text=${title}&url=${url}`}><TwitterIcon /></a>
+                    </Button>
                     <Button size="small" color="primary">
-                        Learn More
-                </Button>
+                        <a target="_blank" href={`http://api.whatsapp.com/send?text=${url}`}><WhatsAppIcon /></a>
+                    </Button>
                 </CardActions>
             </a>
         </Card>

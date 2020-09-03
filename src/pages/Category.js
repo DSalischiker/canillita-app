@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import Layout from '../containers/Layout';
 import FullWidthGrid from '../components/FullWidthGrid';
 import axios from 'axios';
 import GridSkeleton from '../components/GridSkeleton';
 const Category = () => {
-    const { slug } = useParams();
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const location = useLocation();
+
+    const { slug } = useParams();
+
     //Object categories
     const categoriesId = {
         politica: '1',
@@ -22,7 +26,6 @@ const Category = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`https://api.canillitapp.com/news/category/${categoriesId[slug]}`);
-                console.log(response.data);
                 const data = response.data.slice(0, 15);
                 setNews(data);
                 setLoading(false);
@@ -31,7 +34,7 @@ const Category = () => {
             }
         }
         fetchData()
-    }, [])
+    }, [location])
     return (
         <Layout loading={loading}>
             <div>

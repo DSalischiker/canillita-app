@@ -15,6 +15,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -98,6 +99,9 @@ const SearchAppBar = (props) => {
         setState({ ...state, [anchor]: open });
     };
 
+    const categorySelected = (category) => {
+        props.history.push(`/category/${category}`);
+    }
     const list = (anchor) => (
         <div
             className={clsx(classes.list, {
@@ -108,15 +112,15 @@ const SearchAppBar = (props) => {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Política', 'Internacionales', 'Tecnología', 'Espectáculos', 'Deportes'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemText primary={text} />
-                    </ListItem>
+                {['Home', 'Politica', 'Internacionales', 'Tecnologia', 'Espectaculos', 'Deportes'].map((text, index) => (
+                    <div key={text}>
+                        {text === 'Home' ? <Link to={`/`}><ListItem button key={text} ><ListItemText primary={text} /></ListItem></Link> : <Link to={`/category/${text.toLowerCase()}`}><ListItem button key={text} ><ListItemText primary={text} /></ListItem></Link>}
+                    </div>
                 ))}
             </List>
 
 
-        </div>
+        </div >
     );
     return (
         <div className={classes.root}>
@@ -152,7 +156,7 @@ const SearchAppBar = (props) => {
                             <SearchIcon />
                         </div>
                         <InputBase
-                            onKeyPress={(event) => event.key === 'Enter' ? props.history.push(`/search/${event.target.value}`) : null}
+                            onKeyPress={(event) => event.key === 'Enter' && event.target.value !== '' ? props.history.push(`/search/${event.target.value}`) : null}
                             placeholder="Search…"
                             classes={{
                                 root: classes.inputRoot,

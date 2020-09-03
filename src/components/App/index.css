@@ -7,3 +7,23 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.content-p {
+    min-height: 75px;
+}
+
+/* .MediaCard-Bigger p {
+    min-height: 0px !important;
+}
+
+.MediaCard-Bigger img {
+    min-height: 100px;
+}
+
+.MediaCard-Bigger p {
+    min-height: 0px !important;
+}
+
+.MediaCard-Big img {
+    min-height: 100px;
+} */

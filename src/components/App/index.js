@@ -12,6 +12,7 @@ import {
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { deepPurple, lightGreen } from '@material-ui/core/colors';
 
 
 function App() {
@@ -19,7 +20,10 @@ function App() {
   const theme = React.useMemo(
     () =>
       createMuiTheme({
+
         palette: {
+          primary: { main: '#00a152' },
+          secondary: deepPurple,
           type: prefersDarkMode ? 'dark' : 'dark',
         },
       }),

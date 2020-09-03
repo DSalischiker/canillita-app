@@ -26,17 +26,17 @@ export default function FullWidthGrid(props) {
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <ImgMediaCard data={first} />
+                    <ImgMediaCard data={first} height={400} className="MediaCard-Biggest" />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <ImgMediaCard data={second} />
+                    <ImgMediaCard data={second} height={300} className="MediaCard-Big" />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <ImgMediaCard data={third} />
+                    <ImgMediaCard data={third} height={300} className="MediaCard-Big" />
                 </Grid>
                 {otherNews.map((noticia) => <Grid key={noticia.news_id} item xs={6} sm={3}>
 
-                    <ImgMediaCard data={noticia} />
+                    <ImgMediaCard data={noticia} height={250} />
                 </Grid>)}
 
 

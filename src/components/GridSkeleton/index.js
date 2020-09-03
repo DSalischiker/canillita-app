@@ -27,33 +27,26 @@ export default function GridSkeleton(props) {
         <div>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Skeleton variant="rect" width={210} height={118} />
+                    <Skeleton variant="rect" width={1200} height={250} style={{ width: '100%' }} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Skeleton variant="rect" width={210} height={118} />
+                    <Skeleton variant="rect" width={210} height={250} style={{ width: '100%' }} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Skeleton variant="rect" width={210} height={118} />
+                    <Skeleton variant="rect" width={210} height={250} style={{ width: '100%' }} />
                 </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Skeleton variant="rect" width={210} height={118} />
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Skeleton variant="rect" width={210} height={118} />
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Skeleton variant="rect" width={210} height={118} />
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Skeleton variant="rect" width={210} height={118} />
-                </Grid>
-                {/* {otherNews.map((noticia) => <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}><Skeleton variant="rect" width={210} height={250} style={{ width: '100%' }} /></Grid>
+                <Grid item xs={12} sm={3}><Skeleton variant="rect" width={210} height={250} style={{ width: '100%' }} /></Grid>
+                <Grid item xs={12} sm={3}><Skeleton variant="rect" width={210} height={250} style={{ width: '100%' }} /></Grid>
+                <Grid item xs={12} sm={3}><Skeleton variant="rect" width={210} height={250} style={{ width: '100%' }} /></Grid>
+            </Grid>
+            {/* {otherNews.map((noticia) => <Grid item xs={6} sm={3}>
 
                     <Skeleton variant="rect" width={210} height={118} />
                 </Grid>)} */}
 
 
-            </Grid>
-        </div>
+
+        </div >
     );
 }
