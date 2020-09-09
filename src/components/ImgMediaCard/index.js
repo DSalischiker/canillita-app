@@ -43,10 +43,10 @@ export default function ImgMediaCard(props) {
                         title={title}
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom color="textSecondary" variant="body2" component="p">
                             {source_name}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" className="content-p">
+                        <Typography variant="body1" component="p" className="content-p">
                             {title}
                         </Typography>
                     </CardContent>

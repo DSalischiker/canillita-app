@@ -4,6 +4,7 @@ import SearchAppBar from '../components/SearchAppBar';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import GridSkeleton from '../components/GridSkeleton';
+import Footer from '../components/Footer';
 const Layout = ({ children, loading }) => {
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -20,7 +21,7 @@ const Layout = ({ children, loading }) => {
             <div className='inner'>
                 {children}
             </div>
-
+            <Footer />
         </>
     )
 }

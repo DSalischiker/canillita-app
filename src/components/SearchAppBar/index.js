@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,6 +16,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -122,6 +123,23 @@ const SearchAppBar = (props) => {
 
         </div >
     );
+    //WEATHER
+    const [weather, setWeather] = useState([]);
+    const cityid = '3435910';
+    const appid = '68b8897b81ff8d1f1cbb6624f92d1943';
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${cityid}&appid=${appid}&units=metric`);
+                const data = response.data.main;
+                console.log('WEATHERAPI', response.data.main);
+                setWeather(data)
+            } catch (error) {
+                console.error('este es mi error', error);
+            }
+        }
+        fetchData();
+    }, [])
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -150,7 +168,17 @@ const SearchAppBar = (props) => {
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
                         Canillita
-          </Typography>
+                    </Typography>
+                    <div className='SearchAppBar-DivWeather'>
+                        <div>
+                            <h4>Temperatura:</h4>
+                            <span>&nbsp;{`${JSON.stringify(weather.temp)}°C`}</span>
+                        </div>
+                        <div>
+                            <h4>ST:</h4>
+                            <span>&nbsp;{`${JSON.stringify(weather.feels_like)}°C`}</span>
+                        </div>
+                    </div>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />

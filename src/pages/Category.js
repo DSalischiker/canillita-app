@@ -37,9 +37,9 @@ const Category = () => {
     }, [location])
     return (
         <Layout loading={loading}>
-            <div>
-                {`Categoria: ${slug}`}
-            </div>
+
+            <h1>{`Categoria: ${slug}`}</h1>
+
             {!loading ? <FullWidthGrid data={news} /> : <GridSkeleton />}
         </Layout >
     )
