@@ -1,32 +1,33 @@
 .inner {
-    max-width: 1200px;
-    margin: 2em auto;
+  max-width: 1200px;
+  margin: 2em auto;
 }
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .content-p {
-    min-height: 75px;
+  min-height: 75px;
 }
 
 .SearchAppBar-DivWeather {
-    min-width: 225px;
-    margin-right: 2em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  min-width: 225px;
+  margin-right: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .SearchAppBar-DivWeather div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.Div-Pagination {
+  margin: 0 auto;
+}
 /* .MediaCard-Bigger p {
     min-height: 0px !important;
 }
@@ -44,10 +45,10 @@ a {
 } */
 
 .Footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    width: 80vw;
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 80vw;
+  margin: 0 auto;
 }
